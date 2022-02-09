@@ -1,10 +1,13 @@
-package com.javadevjournal.springbooth2.model;
+package com.javadevjournal.springbootresttemplate.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "EMPLOYEE")
-public class Employee {
+public class Employee implements Serializable {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

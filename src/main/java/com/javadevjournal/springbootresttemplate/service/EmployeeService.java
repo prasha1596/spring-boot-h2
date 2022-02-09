@@ -1,7 +1,7 @@
-package com.javadevjournal.springbooth2.service;
+package com.javadevjournal.springbootresttemplate.service;
 
-import com.javadevjournal.springbooth2.model.Employee;
-import com.javadevjournal.springbooth2.repository.EmployeeRepository;
+import com.javadevjournal.springbootresttemplate.model.Employee;
+import com.javadevjournal.springbootresttemplate.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
