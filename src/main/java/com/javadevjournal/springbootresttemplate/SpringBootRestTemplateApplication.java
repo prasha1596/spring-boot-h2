@@ -27,7 +27,6 @@ public class SpringBootRestTemplateApplication {
         return new RestTemplate(getClientHttpRequestFactory());
     }
 
-    @Bean
     ClientHttpRequestFactory getClientHttpRequestFactory() {
         int timeout = 5000;
         HttpComponentsClientHttpRequestFactory clientHttpRequestFactory
@@ -36,7 +35,6 @@ public class SpringBootRestTemplateApplication {
         return clientHttpRequestFactory;
     }
 
-    @Bean
     ClientHttpRequestFactory getClientHttpRequestFactoryV1() {
         int timeout = 5000;
         RequestConfig config = RequestConfig.custom()
