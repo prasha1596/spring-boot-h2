@@ -1,5 +1,8 @@
 package com.javadevjournal.springbootresttemplate;
 
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -24,12 +27,28 @@ public class SpringBootRestTemplateApplication {
         return new RestTemplate(getClientHttpRequestFactory());
     }
 
-    private ClientHttpRequestFactory getClientHttpRequestFactory() {
+    @Bean
+    ClientHttpRequestFactory getClientHttpRequestFactory() {
         int timeout = 5000;
         HttpComponentsClientHttpRequestFactory clientHttpRequestFactory
                 = new HttpComponentsClientHttpRequestFactory();
         clientHttpRequestFactory.setConnectTimeout(timeout);
         return clientHttpRequestFactory;
+    }
+
+    @Bean
+    ClientHttpRequestFactory getClientHttpRequestFactoryV1() {
+        int timeout = 5000;
+        RequestConfig config = RequestConfig.custom()
+                .setConnectTimeout(timeout)
+                .setConnectionRequestTimeout(timeout)
+                .setSocketTimeout(timeout)
+                .build();
+        CloseableHttpClient client = HttpClientBuilder
+                .create()
+                .setDefaultRequestConfig(config)
+                .build();
+        return new HttpComponentsClientHttpRequestFactory(client);
     }
 
 }
